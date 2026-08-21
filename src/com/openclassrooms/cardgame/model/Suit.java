@@ -19,7 +19,7 @@ public enum Suit {
 	// --------------------------------
 	// METHODES
 	// --------------------------------
-	public int Value() {
+	public int value() {
 		return suit;
 	}
 

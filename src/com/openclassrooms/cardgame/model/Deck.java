@@ -39,7 +39,7 @@ public class Deck {
 	// --------------------------------
 	// METHODES
 	// --------------------------------
-	private void shuffle() {
+	public void shuffle() {
 		Random random = new Random();
 		for (int i = 0; i < cards.size(); i++) {
 			// Échange 2 cartes dans la liste :
