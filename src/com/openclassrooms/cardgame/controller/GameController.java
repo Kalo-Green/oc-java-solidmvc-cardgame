@@ -46,7 +46,7 @@ public class GameController {
 	// --------------------------------
 	public void run() {
 		while (gameState == GameState.AddingPlayers) {
-			view.promptForPLayerName();
+			view.promptForPlayerName();
 		}
 
 		switch (gameState) {
