@@ -28,18 +28,19 @@ public class GameController {
 	View view;
 
 	GameState gameState;
+	GameEvaluator evaluator;
 
 	// --------------------------------
 	// CONSTRUCTEUR
 	// --------------------------------
-	public GameController(Deck deck, View view) {
+	public GameController(Deck deck, View view, GameEvaluator evaluator) {
 		super();
 		this.deck = deck;
-		this.players = new ArrayList<Player>();
 		this.view = view;
-
+		this.players = new ArrayList<Player>();
 		this.gameState = GameState.AddingPlayers;
 		view.setController(this);
+		this.evaluator = evaluator;
 	}
 
 	// --------------------------------
@@ -103,7 +104,7 @@ public class GameController {
 	}
 
 	void evaluateWinner() {
-		winner = new GameEvaluator().evaluateWinner(players);
+		winner = evaluator.evaluateWinner(players);
 	}
 
 	void displayWinner() {
