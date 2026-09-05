@@ -117,4 +117,17 @@ public class GameController {
 		}
 	}
 
+	public void nextAction(String nextChoice) {
+		if ("+q".equals(nextChoice)) {
+			exitGame();
+		} else {
+			startGame();
+		}
+	}
+
+	void exitGame() {
+		System.exit(0);
+
+	}
+
 }
