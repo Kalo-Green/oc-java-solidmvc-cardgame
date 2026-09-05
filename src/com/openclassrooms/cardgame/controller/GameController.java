@@ -7,7 +7,7 @@ import com.openclassrooms.cardgame.games.GameEvaluator;
 import com.openclassrooms.cardgame.model.Deck;
 import com.openclassrooms.cardgame.model.Player;
 import com.openclassrooms.cardgame.model.PlayingCard;
-import com.openclassrooms.cardgame.view.View;
+import com.openclassrooms.cardgame.view.GameViewable;
 
 public class GameController {
 
@@ -25,7 +25,7 @@ public class GameController {
 	Deck deck;
 	List<Player> players;
 	Player winner;
-	View view;
+	GameViewable view;
 
 	GameState gameState;
 	GameEvaluator evaluator;
@@ -33,7 +33,7 @@ public class GameController {
 	// --------------------------------
 	// CONSTRUCTEUR
 	// --------------------------------
-	public GameController(Deck deck, View view, GameEvaluator evaluator) {
+	public GameController(Deck deck, GameViewable view, GameEvaluator evaluator) {
 		super();
 		this.deck = deck;
 		this.view = view;

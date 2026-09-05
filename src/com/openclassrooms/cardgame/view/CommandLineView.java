@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.openclassrooms.cardgame.controller.GameController;
 
-public class View {
+public class CommandLineView implements GameViewable {
 
 	// --------------------------------
 	// ATTRIBUTS
