@@ -1,7 +1,6 @@
 package com.openclassrooms.cardgame.model;
 
-public class Player {
-
+public class Player implements IPlayer {
 	// --------------------------------
 	// ATTRIBUTS
 	// --------------------------------
@@ -37,4 +36,5 @@ public class Player {
 	public PlayingCard removeCard() {
 		return hand.removeCard();
 	}
+
 }

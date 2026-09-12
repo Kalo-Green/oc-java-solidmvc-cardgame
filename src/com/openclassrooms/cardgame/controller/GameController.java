@@ -5,8 +5,10 @@ import java.util.List;
 
 import com.openclassrooms.cardgame.games.GameEvaluator;
 import com.openclassrooms.cardgame.model.Deck;
+import com.openclassrooms.cardgame.model.IPlayer;
 import com.openclassrooms.cardgame.model.Player;
 import com.openclassrooms.cardgame.model.PlayingCard;
+import com.openclassrooms.cardgame.model.WinningPlayer;
 import com.openclassrooms.cardgame.view.GameViewable;
 
 public class GameController {
@@ -23,8 +25,8 @@ public class GameController {
 	// ATTRIBUTS
 	// --------------------------------
 	Deck deck;
-	List<Player> players;
-	Player winner;
+	List<IPlayer> players;
+	IPlayer winner;
 	GameViewable view;
 
 	GameState gameState;
@@ -37,7 +39,7 @@ public class GameController {
 		super();
 		this.deck = deck;
 		this.view = view;
-		this.players = new ArrayList<Player>();
+		this.players = new ArrayList<IPlayer>();
 		this.gameState = GameState.AddingPlayers;
 		view.setController(this);
 		this.evaluator = evaluator;
@@ -75,7 +77,7 @@ public class GameController {
 			// On mélange le paquet.
 			deck.shuffle();
 			int playerIndex = 1;
-			for (Player player : players) {
+			for (IPlayer player : players) {
 				// Retire une carte du paquet et l'ajoute à la main du joueur.
 				player.addCardToHand(deck.removeTopCard());
 				// Affiche tous les joueurs avec leur face cachée.
@@ -90,7 +92,7 @@ public class GameController {
 	// Retourne et révèle les cartes.
 	public void flipCards() {
 		int playerIndex = 1;
-		for (Player player : players) {
+		for (IPlayer player : players) {
 			PlayingCard pc = player.getCard(0);
 			pc.flip();
 			view.showCardForPlayer(playerIndex++, player.getName(), pc.getRank().toString(), pc.getSuit().toString());
@@ -104,7 +106,7 @@ public class GameController {
 	}
 
 	void evaluateWinner() {
-		winner = evaluator.evaluateWinner(players);
+		winner = new WinningPlayer(evaluator.evaluateWinner(players));
 	}
 
 	void displayWinner() {
@@ -112,7 +114,7 @@ public class GameController {
 	}
 
 	void rebuildDeck() {
-		for (Player player : players) {
+		for (IPlayer player : players) {
 			deck.returnCardToDeck(player.removeCard());
 		}
 	}

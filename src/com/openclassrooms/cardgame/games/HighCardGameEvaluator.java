@@ -2,15 +2,15 @@ package com.openclassrooms.cardgame.games;
 
 import java.util.List;
 
-import com.openclassrooms.cardgame.model.Player;
+import com.openclassrooms.cardgame.model.IPlayer;
 import com.openclassrooms.cardgame.model.PlayingCard;
 
 public class HighCardGameEvaluator implements GameEvaluator {
 
 	@Override
-	public Player evaluateWinner(List<Player> players) {
+	public IPlayer evaluateWinner(List<IPlayer> players) {
 		// Initialise les valeurs utilisées pour déterminer le meilleur joueur.
-		Player bestPlayer = null;
+		IPlayer bestPlayer = null;
 		// Initialise le meilleur Rank trouvé.
 		// -1 permet de considérer la première carte comme la meilleure.
 		int bestRank = -1;
@@ -18,7 +18,7 @@ public class HighCardGameEvaluator implements GameEvaluator {
 		// Utilisé pour départager les cartes ayant le même Rank.
 		int bestSuit = -1;
 
-		for (Player player : players) {
+		for (IPlayer player : players) {
 			// Indique si le joueur actuel doit devenir le nouveau meilleur joueur.
 			boolean newBestPlayer = false;
 
